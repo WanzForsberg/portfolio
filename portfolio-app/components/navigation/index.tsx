@@ -3,11 +3,30 @@ import { BtnList } from '@/app/data';
 import React from 'react';
 
 const Navigation = () => {
+  const angleIncrement = 360 / BtnList.length;
+
   return (
-    <div className="flex items-center justify-between relative">
-      {BtnList.map((btn: any, index: number) => {
-        return <button key={index}>{btn.label}</button>;
-      })}
+    <div className="fixed w-full h-screen flex items-center justify-center">
+      <div className="w-max flex items-center justify-between relative">
+        {BtnList.map((btn, index) => {
+          const angleRad = (index * angleIncrement * Math.PI) / 180;
+          const radius = 'calc(20vw - 1rem)';
+
+          const x = `calc(${radius} * ${Math.cos(angleRad)})`;
+          const y = `calc(${radius} * ${Math.sin(angleRad)})`;
+
+          return (
+            <button
+              className="absolute"
+              key={index}
+              style={{
+                transform: `translate(${x}, ${y})`,
+              }}>
+              {btn.label}
+            </button>
+          );
+        })}
+      </div>
     </div>
   );
 };
