@@ -26,7 +26,9 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "components/RenderModel.jsx"
+    "components/RenderModel.jsx",
+    "components/navigation/NavButton.jsx",
+    "components/navigation/index.jsx"
   ],
   "exclude": ["node_modules"]
 }
